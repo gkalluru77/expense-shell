@@ -1,3 +1,4 @@
+echo -e "\e[35m Installing Nginx \e[0m"
 dnf install nginx -y
 
 cp expense.conf /etc/nginx/default.d/expense.conf

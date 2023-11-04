@@ -4,7 +4,11 @@ color="\e[31m"
 echo -e "${color} Disable node js default version \e[0m"
 
 dnf module disable nodejs &>>$log_file
-echo $?
+if [ $? -eq 0 ]; then
+  echo -e "${color} SUCCESS \e[0m"
+  else
+    echo -e "\e[32m FAILURE \e[0m"
+fi
 
 echo -e "${color} Enable node js 18 version \e[0m"
 dnf module enable nodejs:18 -y &>>$log_file
@@ -32,13 +36,13 @@ echo $?
 
 echo -e "${color} extract application content \e[0m"
 cd /app &>>$log_file
- echo $?
+echo $?
 unzip /tmp/backend.zip  &>>$log_file
- echo $?
+echo $?
 
 echo -e "${color} download nodejs dependencies \e[0m"
 npm install &>>$log_file
- echo $?
+echo $?
 
 echo -e "${color} install mysql client to load schema \e[0m"
 dnf install mysql -y &>>$log_file
@@ -46,10 +50,10 @@ dnf install mysql -y &>>$log_file
 
 echo -e "${color} load schema  \e[0m"
 mysql -h mysql-dev.gdevops.online -uroot -pExpenseApp@1 < /app/schema/backend.sql &>>$log_file
- echo $?
+echo $?
 
 echo -e "${color} starting backend service \e[0m" &>>$log_file
- echo $?
+echo $?
 systemctl daemon-reload
 systemctl enable backend
 systemctl restart backend &>>$log_file

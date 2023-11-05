@@ -1,5 +1,9 @@
 log_file="/tmp/expense.log"
 color="\e[32m"
+
+if [ -z "$1" ]; then
+  exit
+fi
 MYSQL_ROOT_PASSWORD=$1
 
 echo -e "${color} Disable node js default version \e[0m"

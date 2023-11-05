@@ -34,9 +34,9 @@ if [ $? -eq 0 ]; then
     echo -e "\e[31m FAILURE \e[0m"
 fi
 
-echo -e "${color} adding application user \e[0m"
 id expense &>>$log_file
 if [ $? -ne 0 ]; then
+  echo -e "${color} adding application user \e[0m"
   useradd expense &>>$log_file
     if [ $? -eq 0 ]; then
       echo -e "${color} SUCCESS \e[0m"

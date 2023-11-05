@@ -48,6 +48,7 @@ if [ $? -ne 0 ]; then
 if [ ! -d /app ];then
   echo -e "${color} creating application directory \e[0m"
   mkdir /app &>>$log_file
+  echo -e "${color} creating application directory \e[0m"
   if [ $? -eq 0 ]; then
     echo -e "${color} SUCCESS \e[0m"
     else

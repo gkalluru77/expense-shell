@@ -6,6 +6,6 @@ status_check() {
     echo -e "${color} SUCCESS \e[0m"
     else
       echo -e "\e[31m FAILURE \e[0m"
-      exit 0
+      # exit 0
   fi
 }

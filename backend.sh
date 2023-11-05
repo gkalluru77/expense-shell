@@ -1,5 +1,6 @@
 log_file="/tmp/expense.log"
 color="\e[32m"
+MYSQL_ROOT_PASSWD = $1
 
 echo -e "${color} Disable node js default version \e[0m"
 
@@ -95,7 +96,7 @@ dnf install mysql -y &>>$log_file
  fi
 
 echo -e "${color} load schema  \e[0m"
-mysql -h mysql-dev.gdevops.online -uroot -pExpenseApp@1 < /app/schema/backend.sql &>>$log_file
+mysql -h mysql-dev.gdevops.online -uroot -p${MYSQL_ROOT_PASSWD} < /app/schema/backend.sql &>>$log_file
 if [ $? -eq 0 ]; then
   echo -e "${color} SUCCESS \e[0m"
   else

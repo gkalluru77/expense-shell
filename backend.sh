@@ -8,7 +8,7 @@ MYSQL_ROOT_PASSWORD=$1
 
 echo -e "${color} Disable node js default version \e[0m"
 
-dnf module disable nodejs &>>$log_file
+dnf module disable nodejs -y &>>$log_file
 status_check
 
 echo -e "${color} Enable node js 18 version \e[0m"

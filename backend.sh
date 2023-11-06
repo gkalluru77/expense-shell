@@ -47,6 +47,7 @@ unzip /tmp/backend.zip  &>>$log_file
 status_check
 
 echo -e "${color} download nodejs dependencies \e[0m"
+cd /app
 npm install &>>$log_file
 status_check
 echo -e "${color} install mysql client to load schema \e[0m"
